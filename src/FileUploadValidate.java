@@ -41,6 +41,40 @@ public class FileUploadValidate {
         return true;
     }
 
-    
+    public CSVFileData validateNumericColumn(int columnIndex, Label errorMsg) {
+        try (BufferedReader br = new BufferedReader(new FileReader(selectedCsvFile))) {
+
+            br.readLine(); // skip header
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+
+                if (columnIndex >= parts.length) {
+                    errorMsg.setText("Not valid Index. Please Select correct column");
+                    errorMsg.setVisible(true);
+                    return null;
+                }
+
+                if (!parts[columnIndex].matches("-?\\d+(\\.\\d+)?")) {
+                    errorMsg.setText("Not have Numerical Data. Please select another column..");
+                    errorMsg.setVisible(true);
+                    return null;
+                }
+            }
+            errorMsg.setVisible(false);
+            CSVFileData csvFileData = new CSVFileData(selectedCsvFile, columnIndex);
+            return csvFileData;
+
+        } catch (Exception ex) {
+            errorMsg.setText("Have a some errors. Try again...");
+            errorMsg.setVisible(true);
+            return null;
+
+        }
+    }
+
+
+
 
 }
