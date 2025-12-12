@@ -24,4 +24,23 @@ public class FileUploadValidate {
         return false;
     }
 
+    public boolean fileValidate(ComboBox<String> columnSelector, Label errorMsg){
+        // 1. Check file selected
+        if (selectedCsvFile == null) {
+            errorMsg.setText("Error: Please select a CSV file!");
+            errorMsg.setVisible(true);
+            return false;
+        }
+
+        // 2. Check file extension
+        if (!selectedCsvFile.getName().toLowerCase().endsWith(".csv")) {
+            errorMsg.setText("Error: Selected file is not a CSV file.");
+            errorMsg.setVisible(true);
+            return false;
+        }
+        return true;
+    }
+
+    
+
 }
