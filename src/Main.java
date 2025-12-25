@@ -81,7 +81,7 @@ public class Main extends Application {
         execTimeQuick = new Label("execution time ");
         execTimeHeap = new Label("execution time ");
 
-// --- Sorting Results Blocks ---
+        // --- Sorting Results Blocks ---
         VBox block1 = createSortBlock("Insertion Sort", textAreaInsertion, execTimeInsertion);
         VBox block2 = createSortBlock("Bubble Sort", textAreaBubble, execTimeBubble);
         VBox block3 = createSortBlock("Merge Sort", textAreaMerge, execTimeMerge);
@@ -137,7 +137,7 @@ public class Main extends Application {
                 if(csvFileInfo != null){
                     ExtractData extractData = new ExtractData(csvFileInfo.file, csvFileInfo.Index);
                     arr = extractData.numericValues;
-//                    System.out.println(Arrays.toString(arr));
+                    // System.out.println(Arrays.toString(arr));
                     // Run all sorting algorithms
                     double[] bubble = SortAlgorithms.bubbleSort(arr);
                     double[] insertion = SortAlgorithms.insertionSort(arr);
