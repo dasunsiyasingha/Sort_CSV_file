@@ -1,3 +1,4 @@
+
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -8,7 +9,20 @@ import javafx.scene.layout.*;
 
 
 public class PerformanceReport {
-    
+    public void findFastest(Long bubbleTime, Long insertionTime, Long mergeTime, Long quickTime, Long heapTime, Label bestAlgo){
+        long min = Math.min(heapTime, Math.min(Math.min(bubbleTime, insertionTime), Math.min(mergeTime, quickTime)));
+
+        String fastest = "";
+
+        if (min == bubbleTime) fastest = "Bubble Sort";
+        else if (min == insertionTime) fastest = "Insertion Sort";
+        else if (min == mergeTime) fastest = "Merge Sort";
+        else if (min == heapTime) fastest = "Heap Sort";
+        else fastest = "Quick Sort";
+
+        bestAlgo.setText("Fastest: " + fastest);
+    }
+
     public void showExecutionTimeChart(
             Long bubbleTime,
             Long insertionTime,
