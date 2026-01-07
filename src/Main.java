@@ -21,6 +21,7 @@ public class Main extends Application {
     FileUploadValidate fileUploadValidate = new FileUploadValidate();
     boolean fileValidatedOk;
     boolean fileUploadOk, numericalColumn;
+    double[] arr;
 
     private TextArea textAreaInsertion;
     private TextArea textAreaBubble;
